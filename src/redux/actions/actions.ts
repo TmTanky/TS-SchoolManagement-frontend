@@ -6,3 +6,21 @@ export const loginSuccess = (data: IuserInfo) => {
         payload: data
     }
 }
+
+export const loginTrue = () => {
+    return {
+        type: 'LOGIN_TRUE'
+    }
+}
+
+export const logoutSuccess = () => {
+    return {
+        type: 'LOGOUT_SUCCESS'
+    }
+}
+
+export const loginFalse = () => {
+    return {
+        type: 'LOGIN_FALSE'
+    }
+}

@@ -2,4 +2,30 @@ nav {
     background-color: #00600f;
     padding: 1rem 0.5rem;
     color: white;
+    display: flex;
+}
+
+nav h1 {
+    margin-left: 1rem;
+}
+
+.navlogo, .navlinks {
+    display: flex;
+}
+
+.navlogo {
+    flex: 3;
+    margin: auto;
+}
+
+.navlinks {
+    flex: 1;
+    justify-content: flex-end;
+    margin: auto;
+    margin-right: 1rem;
+}
+
+.navlinks p {
+    color: white;
+    cursor: pointer;
 }

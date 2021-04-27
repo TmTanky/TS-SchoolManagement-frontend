@@ -11,11 +11,14 @@ import CloseIcon from '@material-ui/icons/Close';
 
 // Interfaces
 import { Ilogin, IloginError } from '../../interfaces/login';
+import { IuserInfo } from '../../interfaces/userInfo';
+
+// Redux
+import { loginSuccess, loginTrue } from '../../redux/actions/actions';
 
 // CSS
 import './login.css'
-import { IuserInfo } from '../../interfaces/userInfo';
-import { loginSuccess } from '../../redux/actions/actions';
+
 
 export const LoginPage: FC = () => {
 
@@ -48,7 +51,6 @@ export const LoginPage: FC = () => {
                         firstName
                         middleName
                         lastName
-                        age
                         email
                         role
                         subjects {
@@ -69,10 +71,11 @@ export const LoginPage: FC = () => {
             })
 
             if (data.data.loginUser !== null) {
-                dispatch(loginSuccess(data.data.loginUser))
                 setLoginErrors({
                     err: []
                 })
+                dispatch(loginSuccess(data.data.loginUser))
+                dispatch(loginTrue())
             }
             
             if (data.errors && data.errors.length >= 1 ) {

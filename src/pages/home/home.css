@@ -1,0 +1,25 @@
+header {
+    background-color: whitesmoke;
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.everyannouncement {
+    background-color: whitesmoke;
+    padding: 1rem 1rem 4rem 1rem;
+    margin: 0.5rem 5rem;
+    border-radius: 10px;
+}
+
+.createann {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}

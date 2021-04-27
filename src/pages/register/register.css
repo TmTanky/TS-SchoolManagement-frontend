@@ -1,0 +1,10 @@
+.registerform {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 10rem auto;
+}
+
+.passwords {
+    display: flex
+}

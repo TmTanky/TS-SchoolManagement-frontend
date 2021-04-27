@@ -1,3 +1,9 @@
+export enum UserRole {
+    ADMIN = "admin",
+    TEACHER = "teacher",
+    STUDENT = "student"
+}
+
 export interface IuserInfo {
     _id: string
     firstName: string
@@ -5,6 +11,6 @@ export interface IuserInfo {
     lastName: string
     age: number
     email: string
-    role: string
+    role: UserRole
     subjects: string[]
 }

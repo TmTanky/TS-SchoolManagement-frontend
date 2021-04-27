@@ -13,6 +13,7 @@ export const userReducer = (state = INITIAL_STATE, action: Iaction) => {
             }
         case 'LOGOUT_SUCCESS':
             return {
+                ...state,
                 user: {}
             }
         default:
