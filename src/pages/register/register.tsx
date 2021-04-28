@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
-
+import { Link } from 'react-router-dom'
 // Interfaces
 import { Iregister } from '../../interfaces/register'
 import { IuserInfo } from '../../interfaces/userInfo'
@@ -140,6 +140,7 @@ export const RegisterPage: FC = () => {
                     <TextField name="passwordConfirm" type="password" variant="filled" label="Password Confirm" style={{width: '50%'}} value={register.passwordConfirm} onChange={handleChange} />
                 </div>
                 <Button onClick={registerSubmit} variant="contained" color="primary" style={{marginTop: '1rem'}} > Register </Button>
+                <Link style={{marginTop: '0.5rem'}} to="/" > Login here </Link>
             </form>
         </div>
     )

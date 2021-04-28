@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 // Interfaces
 import { Istate } from '../../interfaces/state'
@@ -19,6 +20,7 @@ import './header.css'
 const Header: FC = () => {
 
     const dispatch = useDispatch()
+    const history = useHistory()
     const [openSidebar, setOpenSidebar] = useState(false)
     const isLoggedIn = useSelector((state: Istate) => state.isLoggedIn)
 
@@ -31,7 +33,7 @@ const Header: FC = () => {
         <nav>
             <div className="navlogo">
                 {isLoggedIn ? <MenuIcon style={{marginLeft: '0.5rem', cursor: 'pointer'}} onClick={() => setOpenSidebar(true)} /> : ""}
-                <h1> School Management </h1>
+                <h1 style={{cursor: 'pointer'}} onClick={() => history.push('/home')} > School Management </h1>
             </div>
 
             <Sidebar toggle={openSidebar} setToggle={setOpenSidebar} />

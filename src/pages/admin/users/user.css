@@ -1,0 +1,16 @@
+.oneuser {
+    background-color: whitesmoke;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+.oneuser h2 {
+    margin-bottom: 1.5rem;
+}
+
+.useronly {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 3rem;
+}

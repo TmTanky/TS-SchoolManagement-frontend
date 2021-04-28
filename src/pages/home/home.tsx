@@ -31,8 +31,7 @@ export const HomePage: FC = () => {
                     title
                     details
                 }
-            }
-            `
+            }`
         })
 
         if (data.data.allAnnouncements) {

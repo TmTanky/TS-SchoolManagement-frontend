@@ -5,12 +5,11 @@ export enum UserRole {
 }
 
 export interface IuserInfo {
-    _id: string
-    firstName: string
-    middleName: string
-    lastName: string
-    age: number
-    email: string
-    role: UserRole
-    subjects: string[]
+    _id?: string
+    firstName?: string
+    middleName?: string
+    lastName?: string
+    email?: string
+    role?: UserRole
+    subjects?: string[]
 }

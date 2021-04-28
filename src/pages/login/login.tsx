@@ -1,6 +1,7 @@
 import { ChangeEvent, ChangeEventHandler, FC, useState } from 'react';
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 // Material-UI
 import { TextField, Button } from '@material-ui/core';
@@ -125,6 +126,7 @@ export const LoginPage: FC = () => {
                 <TextField label="Email" type="email" variant="filled" style={{marginBottom: '0.3rem', marginTop: '0.5rem'}} name="email" value={login.email} onChange={handleChange} />
                 <TextField label="Password" type="password" variant="filled" style={{marginBottom: '0.3rem'}} name="password" value={login.password} onChange={handleChange} />
                 <Button variant="contained" onClick={loginSubmit} color="primary" style={{marginTop: '1rem'}} > Login </Button>
+                <Link style={{marginTop: '0.5rem'}} to="/register" > Register here </Link> 
             </form>
         </div>
     )
