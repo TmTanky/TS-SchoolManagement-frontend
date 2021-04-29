@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 // Material-UI
@@ -11,12 +11,16 @@ import { Divider } from '@material-ui/core';
 import { Istate } from '../../interfaces/state'
 import { UserRole } from '../../interfaces/userInfo';
 
+// Redux
+import { loginFalse, logoutSuccess } from '../../redux/actions/actions';
+
 // CSS
 import './sidebar.css'
 
 export const Sidebar: FC<{toggle: boolean, setToggle: Function}> = ({toggle, setToggle}) => {
 
     const history = useHistory()
+    const dispatch = useDispatch()
     const user = useSelector((state: Istate) => state.user.user)
 
     return (toggle ? <Slide direction="right" in={toggle} mountOnEnter unmountOnExit >
@@ -61,7 +65,10 @@ export const Sidebar: FC<{toggle: boolean, setToggle: Function}> = ({toggle, set
                 <Divider/>
                 <p> Helpdesk </p>
                 <Divider/>
-                <p> Logout </p>
+                <p onClick={() => {
+                    dispatch(logoutSuccess())
+                    dispatch(loginFalse())
+                }} > Logout </p>
             </div> : ""}
 
         </div>

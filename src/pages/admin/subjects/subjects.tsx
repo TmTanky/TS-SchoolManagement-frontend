@@ -1,5 +1,6 @@
 import {FC, useState, useEffect} from 'react'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 // Material-UI
 import { CircularProgress, Fade, Button } from '@material-ui/core'
@@ -12,6 +13,7 @@ import './subjects.css'
 
 export const AllSubjects: FC = () => {
 
+    const history = useHistory()
     const [subjects, setSubjects] = useState<Isubject[]>([])
     const [checked, setChecked] = useState(false)
 
@@ -56,7 +58,7 @@ export const AllSubjects: FC = () => {
                         <div className="onesub" >
                             <h1 style={{marginBottom: '1rem'}} > {item.name} </h1>
                             <p> {item.description} </p>
-                            <span> <Button style={{marginTop: '1rem'}} variant="contained" color="primary" > Edit Subject </Button> </span>
+                            <span> <Button onClick={() => history.push(`/admin/subjects/edit/${item._id}`)} style={{marginTop: '1rem'}} variant="contained" color="primary" > Subject Details </Button> </span>
                         </div>
                     </Fade>
                 })}

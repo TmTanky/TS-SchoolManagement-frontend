@@ -59,15 +59,6 @@ export const ManageUsersPage: FC = () => {
     useEffect(() => {
         getAllUsers()
     }, [])
-
-    // console.log(allUsers.data.sort((a, b) => {
-    //     if (a.firstName! < b.firstName!) {
-    //         return -1
-    //     } else if (a.firstName! > b.firstName!) {
-    //         return 1
-    //     }
-    //     return 0
-    // }))
     
     return (
         <div className="manageusers">

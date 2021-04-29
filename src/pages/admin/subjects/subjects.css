@@ -3,3 +3,27 @@
     padding: 1rem;
     margin: 0.5rem;
 }
+
+.studentswhotake {
+    display: flex;
+    flex-direction: column;
+}
+
+.studentswhotake li {
+    margin: 0rem 1rem;
+}
+
+.editsubform {
+    padding: 2rem;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 8rem auto;
+    width: 50%;
+}
+
+.editsubdesc {
+    padding: 0.5rem;
+}

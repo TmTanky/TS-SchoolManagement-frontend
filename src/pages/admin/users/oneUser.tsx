@@ -1,4 +1,4 @@
-import {FC, useState, useEffect} from 'react'
+import {FC, useState, useEffect, useCallback} from 'react'
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
 
@@ -8,6 +8,9 @@ import { IuserInfo } from '../../../interfaces/userInfo'
 // Material-UI
 import { CircularProgress, Fade, Button } from '@material-ui/core'
 
+// Components
+import { EditUserComponent } from '../../../components/admin/editUser/editUser'
+
 // CSS
 import './user.css'
 
@@ -15,11 +18,12 @@ export const AdminOneUser: FC =() => {
 
     const {userID} = useParams<{userID: string}>()
     const [checked, setChecked] = useState(false)
+    const [openEdit, setOpenEdit] = useState(false)
     const [user, setUser] = useState<{ data: IuserInfo }>({
         data: {}
     })
 
-    const getUser = async () => {
+    const getUser = useCallback( async () => {
         const {data} = await axios.post<{data: {oneUser: IuserInfo}}>('http://localhost:8000/graphql', {
             query: `query oneUser($userID: ID!) {
                 oneUser(userID: $userID) {
@@ -43,17 +47,18 @@ export const AdminOneUser: FC =() => {
             setChecked(true)
         }
 
-    }
+
+    },[userID])
 
     useEffect(() => {
         getUser()
-    },[])
+    },[getUser])
 
     return (
         <div className="useruser">
             {Object.keys(user.data).length === 0 ? <div className="loading">
                 <CircularProgress/>
-            </div> : <Fade in={checked}>
+            </div> : openEdit ? <EditUserComponent fname={user.data!.firstName!} mname={user.data!.middleName!} lname={user.data!.lastName!} setToggle={setOpenEdit} /> : <Fade in={checked}>
                 <div>
                     <h1 style={{textAlign: 'center', paddingTop: '3rem '}} > User Details </h1>
                     <div className="useronly">
@@ -63,7 +68,9 @@ export const AdminOneUser: FC =() => {
                         <p> <strong> Last Name: </strong> {user.data.lastName} </p>
                         <p> <strong> Email: </strong> {user.data.email} </p>
                         <p> <strong> Role: </strong> {user.data.role} </p>
-                        <span> <Button style={{marginTop: '1rem'}} variant="contained" color="primary" > Edit User </Button> </span>
+                        <span> <Button onClick={() => {
+                            setOpenEdit(true)
+                        }} style={{marginTop: '1rem'}} variant="contained" color="primary" > Edit User </Button> </span>
                     </div>
                 </div>
             </Fade> }
