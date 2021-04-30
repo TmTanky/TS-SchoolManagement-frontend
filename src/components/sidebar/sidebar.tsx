@@ -23,6 +23,12 @@ export const Sidebar: FC<{toggle: boolean, setToggle: Function}> = ({toggle, set
     const dispatch = useDispatch()
     const user = useSelector((state: Istate) => state.user.user)
 
+    const logout = () => {
+        setToggle(false)
+        dispatch(logoutSuccess())
+        dispatch(loginFalse())
+    }
+
     return (toggle ? <Slide direction="right" in={toggle} mountOnEnter unmountOnExit >
         <div className="sidebar">
             <div className="close">
@@ -41,7 +47,7 @@ export const Sidebar: FC<{toggle: boolean, setToggle: Function}> = ({toggle, set
                     history.push('/admin/subjects')
                 }} > Manage Subjects </p>
                 <Divider/>
-                <p> Logout </p>
+                <p onClick={() => logout()} > Logout </p>
             </div> : ""}
 
             {user.role === UserRole.TEACHER ? <div className="link">
@@ -53,7 +59,7 @@ export const Sidebar: FC<{toggle: boolean, setToggle: Function}> = ({toggle, set
                 <Divider/>
                 <p> My Subjects </p>
                 <Divider/>
-                <p> Logout </p>
+                <p onClick={() => logout()} > Logout </p>
             </div> : ""}
 
             {user.role === UserRole.STUDENT ? <div className="link">
@@ -65,10 +71,7 @@ export const Sidebar: FC<{toggle: boolean, setToggle: Function}> = ({toggle, set
                 <Divider/>
                 <p> Helpdesk </p>
                 <Divider/>
-                <p onClick={() => {
-                    dispatch(logoutSuccess())
-                    dispatch(loginFalse())
-                }} > Logout </p>
+                <p onClick={() => logout()} > Logout </p>
             </div> : ""}
 
         </div>

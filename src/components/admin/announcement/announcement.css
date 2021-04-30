@@ -1,0 +1,10 @@
+.createannform {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    width: 70%;
+    padding: 1rem 2rem;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}

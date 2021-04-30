@@ -58,7 +58,7 @@ export const AdminOneUser: FC =() => {
         <div className="useruser">
             {Object.keys(user.data).length === 0 ? <div className="loading">
                 <CircularProgress/>
-            </div> : openEdit ? <EditUserComponent fname={user.data!.firstName!} mname={user.data!.middleName!} lname={user.data!.lastName!} setToggle={setOpenEdit} /> : <Fade in={checked}>
+            </div> : openEdit ? <EditUserComponent personID={user.data._id!} usersRole={user.data.role!} getUser={getUser} userID={userID} fname={user.data!.firstName!} mname={user.data!.middleName!} lname={user.data!.lastName!} setToggle={setOpenEdit} /> : <Fade in={checked}>
                 <div>
                     <h1 style={{textAlign: 'center', paddingTop: '3rem '}} > User Details </h1>
                     <div className="useronly">

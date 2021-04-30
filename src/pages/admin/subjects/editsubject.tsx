@@ -3,10 +3,13 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 // Material-UI
-import { Fade, CircularProgress, Button, TextField, TextareaAutosize } from '@material-ui/core'
+import { CircularProgress, Fade, Button } from '@material-ui/core'
 
 // Interfaces
 import { Isubject } from '../../../interfaces/subjects'
+
+// Components
+import { EditSubjectComponent } from '../../../components/admin/editSubject/editSubject'
 
 // CSS
 import './subjects.css'
@@ -57,13 +60,7 @@ export const EditSubjectPage: FC = () => {
         <div>
             {Object.keys(subject.data).length === 0 ? <div className="loading">
                 <CircularProgress/>
-            </div> : openEdit ? <Fade in={checked}>
-                    <form className="editsubform" method="post">
-                        <TextField value={subject.data.name} style={{marginBottom: '0.5rem'}} label="Name" />
-                        <TextareaAutosize value={subject.data.description} rowsMin={10} className="editsubdesc" /> 
-                        <span style={{margin: 'auto', marginTop: '1rem'}} > <Button color="primary" variant="contained" > Submit </Button> <Button color="secondary" variant="contained" onClick={() => setOpenEdit(false)} > Cancel </Button> </span>
-                    </form>
-                </Fade> : <Fade in={checked}>
+            </div> : openEdit ? <EditSubjectComponent getOneSubject={getOneSubject} subjectID={subjectID} setOpenEdit={setOpenEdit} checked={checked} subject={subject} /> : <Fade in={checked}>
                 <div>
                     <div className="onesub" >
                         <h1 style={{marginBottom: '1rem'}} > {subject.data.name} </h1>

@@ -12,6 +12,9 @@ import EditIcon from '@material-ui/icons/Edit';
 import { Button, CircularProgress } from '@material-ui/core'
 import Fade from '@material-ui/core/Fade';
 
+// Components
+import { CreateAnnouncement } from '../../components/admin/announcement/announcement'
+
 // CSS
 import './home.css'
 
@@ -19,6 +22,11 @@ export const HomePage: FC = () => {
 
     const user = useSelector((state: Istate) => state.user.user)
     const [checked, setChecked] = useState(false)
+    const [create, setCreate] = useState(false)
+    const [announce, setAnnounce] = useState<Iannouncement>({
+        title: "",
+        details: ""
+    })
     const [announcements, setAnnouncements] = useState<{ datas: Iannouncement[] }>({
         datas: []
     })
@@ -43,6 +51,10 @@ export const HomePage: FC = () => {
 
     }
 
+    const createAnnouncement = () => {
+        setCreate(true)
+    }
+
     useEffect(() => {
         getAllAnnouncement()
     }, [])
@@ -62,9 +74,9 @@ export const HomePage: FC = () => {
                 <h1 style={{marginBottom: '1rem'}} > Welcome {user.firstName}, to your Dashboard. </h1>
             </header> : "" }
         
-            {user.role === UserRole.ADMIN ? <Fade in={checked} >
+            {user.role === UserRole.ADMIN ? create ? <CreateAnnouncement getAllAnnouncement={getAllAnnouncement} details={announce} setDetails={setAnnounce} toggle={create} setToggle={setCreate} /> : <Fade in={checked} >
                 <div className="createann">
-                    <Button color="primary" variant="contained" > Create Announcement </Button>
+                    <Button onClick={createAnnouncement} color="primary" variant="contained" > Create Announcement </Button>
                 </div>
             </Fade> : "" }
 
