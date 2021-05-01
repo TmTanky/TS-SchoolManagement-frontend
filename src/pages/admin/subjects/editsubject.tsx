@@ -10,6 +10,7 @@ import { Isubject } from '../../../interfaces/subjects'
 
 // Components
 import { EditSubjectComponent } from '../../../components/admin/editSubject/editSubject'
+import { AssignInstructor } from '../../../components/admin/assignInstructor/assignInstructor'
 
 // CSS
 import './subjects.css'
@@ -18,7 +19,9 @@ export const EditSubjectPage: FC = () => {
 
     const {subjectID} = useParams<{subjectID: string}>()
     const [checked, setChecked] = useState(false)
+    const [checked2, setChecked2] = useState(false)
     const [openEdit, setOpenEdit] = useState(false)
+    const [openAssign, setOpenAssign] = useState(false)
     const [subject, setSubject] = useState<{data: Isubject}>({
         data: {}
     })
@@ -30,6 +33,11 @@ export const EditSubjectPage: FC = () => {
                     _id
                     name
                     description
+                    instructor {
+                        _id
+                        firstName
+                        lastName
+                    }
                     studentsWhoTake {
                         _id
                         firstName
@@ -60,12 +68,19 @@ export const EditSubjectPage: FC = () => {
         <div>
             {Object.keys(subject.data).length === 0 ? <div className="loading">
                 <CircularProgress/>
-            </div> : openEdit ? <EditSubjectComponent getOneSubject={getOneSubject} subjectID={subjectID} setOpenEdit={setOpenEdit} checked={checked} subject={subject} /> : <Fade in={checked}>
+            </div> : openEdit ? <EditSubjectComponent getOneSubject={getOneSubject} subjectID={subjectID} setOpenEdit={setOpenEdit} checked={checked} subject={subject} /> : 
+            <Fade in={checked}>
                 <div>
                     <div className="onesub" >
                         <h1 style={{marginBottom: '1rem'}} > {subject.data.name} </h1>
                         <p> {subject.data.description} </p>
-                        <Button onClick={() => setOpenEdit(true)} style={{marginTop: '1rem'}} color="primary" variant="contained" > Edit Subject </Button>
+                        <h3 style={{marginTop: '1rem'}} > Instructor: {subject.data.instructor === null ? "None" : `${subject.data.instructor?.firstName} ${subject.data.instructor?.lastName}`} </h3>
+                        <span> <Button onClick={() => setOpenEdit(true)} style={{marginTop: '1rem'}} color="primary" variant="contained" > Edit Subject </Button>
+                        <Button onClick={() => {
+                            setOpenAssign(true)
+                            setChecked2(true)
+                        }} style={{marginTop: '1rem', marginLeft: '0.5rem'}} color="secondary" variant="contained" > {subject.data.instructor === null ? 'Add Instructor' : 'Re-assign Instructor'} </Button> </span>
+                        {openAssign ? <AssignInstructor checked2={checked2} setChecked2={setChecked2} subjectID={subject.data!._id!} getOneSubject={getOneSubject} instructorID={subject.data.instructor?._id} setToggle={setOpenAssign} /> : "" }
                     </div>
 
                     <div className="studentswhotake">

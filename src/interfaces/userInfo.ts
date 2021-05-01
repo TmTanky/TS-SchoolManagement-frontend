@@ -1,3 +1,5 @@
+import { Isubject } from "./subjects";
+
 export enum UserRole {
     ADMIN = "admin",
     TEACHER = "teacher",
@@ -12,4 +14,5 @@ export interface IuserInfo {
     email?: string
     role?: UserRole
     subjects?: string[]
+    instructorsSubjects?: Isubject[] | null
 }
