@@ -13,6 +13,6 @@ export interface IuserInfo {
     lastName?: string
     email?: string
     role?: UserRole
-    subjects?: string[]
+    subjects?: Isubject[] | null
     instructorsSubjects?: Isubject[] | null
 }

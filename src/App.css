@@ -8,3 +8,13 @@
   min-height: 85vh;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.loading {
+  margin: 10rem auto;
+  padding: 10rem auto;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+}

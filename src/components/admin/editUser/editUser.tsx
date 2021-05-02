@@ -24,6 +24,7 @@ export const EditUserComponent: FC<{ setToggle: Function, fname: string, mname: 
     const [open, setOpen] = useState(false)
     const [role,setRole] = useState(usersRole as string)
     const [errors, setErrors] = useState<Ierror[]>([])
+    
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {value, name} = e.target
 

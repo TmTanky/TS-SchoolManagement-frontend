@@ -69,8 +69,13 @@ export const Sidebar: FC<{toggle: boolean, setToggle: Function}> = ({toggle, set
                 <h1> Menu </h1>
                 <p onClick={() => {
                     setToggle(false)
-                    history.push('/admin/users')
+                    history.push('/student/mysubjects')
                 }} > My Subjects </p>
+                <Divider/>
+                <p onClick={() => {
+                    setToggle(false)
+                    history.push('/student/managesubjects')
+                }} > Manage Subjects </p>
                 <Divider/>
                 <p> Helpdesk </p>
                 <Divider/>

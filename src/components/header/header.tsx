@@ -39,7 +39,10 @@ const Header: FC = () => {
             <Sidebar toggle={openSidebar} setToggle={setOpenSidebar} />
 
             {isLoggedIn ? <div className="navlinks">
-                <p onClick={() => logout()} > Logout </p>
+                <p onClick={() => {
+                    setOpenSidebar(false)
+                    logout()
+                }} > Logout </p>
             </div> : ""}
         </nav>
     )
