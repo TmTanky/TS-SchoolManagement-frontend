@@ -46,13 +46,16 @@ export const AssignInstructor: FC<{setToggle: Function, instructorID: string | u
         setToBeInstructor(e.currentTarget.value)
     }
 
-    const assignToSubject = async () => {
+    const reAssignToSubject = async () => {
         
         try {
 
+            console.log(instructorID)
+            console.log(toBeInstructor)
+
             await axios.post('http://localhost:8000/graphql', {
-                query: `mutation assignInstructor($subjectID: ID!, $instructorID: ID!) {
-                    assignInstructor(subjectID: $subjectID, instructorID: $instructorID) {
+                query: `mutation reAssignInstructor($subjectID: ID!, $instructorID: ID!) {
+                    reAssignInstructor(subjectID: $subjectID, instructorID: $instructorID) {
                         name
                         description
                         instructor {
@@ -93,7 +96,8 @@ export const AssignInstructor: FC<{setToggle: Function, instructorID: string | u
                             return <option key={item._id} value={item._id}> {item.firstName} {item.lastName} </option>
                         })}
                     </select>
-                    <span> <Button onClick={assignToSubject} style={{marginLeft: '0.5rem'}} color="primary" variant="contained" > Assign </Button> <Button color="secondary" variant="contained" onClick={() => {
+                    {console.log()}
+                    <span> <Button onClick={reAssignToSubject} style={{marginLeft: '0.5rem'}} color="primary" variant="contained" > Assign </Button> <Button color="secondary" variant="contained" onClick={() => {
                         setToggle(false)
                         setChecked2(false)
                     }} > Cancel </Button> </span>

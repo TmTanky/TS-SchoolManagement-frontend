@@ -2,12 +2,16 @@ import {FC, useEffect, useState, useCallback} from 'react'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 
+// Material-UI
+import { CircularProgress, Fade } from '@material-ui/core'
+
 // Interfaces
 import { Istate } from '../../../interfaces/state'
 import { IuserInfo } from '../../../interfaces/userInfo'
 
 export const TeacherStudentPage: FC = () => {
 
+    const [checked, setChecked] = useState(false)
     const userID = useSelector((state: Istate) => state.user.user._id)
     const [user, setUser] = useState<IuserInfo>({})
 
@@ -42,6 +46,7 @@ export const TeacherStudentPage: FC = () => {
 
             if (data.data.oneUser) {
                 setUser(data.data.oneUser)
+                setChecked(true)
             }
             
         } catch (err) {
@@ -57,16 +62,24 @@ export const TeacherStudentPage: FC = () => {
 
     return (
         <div>
-            <h1 style={{textAlign: 'center', padding: '2rem 0rem'}} > My Subjects </h1>
-            {user.instructorsSubjects?.map(item => {
-                return <div key={item._id} className="inssubs" >
-                    <h1 style={{marginBottom: '0.5rem'}} > {item.name} </h1>
-                    {item.studentsWhoTake?.length === 0 ? <h2> No students take </h2> : 
-                    item.studentsWhoTake?.map(student => {
-                        return <li key={student._id} > {student.firstName} {student.lastName} </li>
-                    })}
-                </div>
-            })}
+            {checked ? <div>
+                <Fade in={checked} >
+                    <div>
+                        <h1 style={{textAlign: 'center', padding: '2rem 0rem'}} > My Students </h1>
+                            {user.instructorsSubjects?.map(item => {
+                                return <div key={item._id} className="inssubs" >
+                                    <h1 style={{marginBottom: '0.5rem'}} > {item.name} </h1>
+                                    {item.studentsWhoTake?.length === 0 ? <h2> No students take </h2> : 
+                                    item.studentsWhoTake?.map(student => {
+                                        return <li key={student._id} > {student.firstName} {student.lastName} </li>
+                                    })}
+                                </div>
+                            })}
+                    </div>
+                </Fade>
+            </div> : <div className="loading">
+                <CircularProgress/>
+            </div> }
         </div>
     )
 

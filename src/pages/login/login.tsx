@@ -116,9 +116,7 @@ export const LoginPage: FC = () => {
                                         >
                                         <CloseIcon fontSize="inherit" />
                                         </IconButton>
-                                    }
-                                    >
-                                    
+                                    }>
                                     {item}
                                     </Alert>
                                 </Collapse>

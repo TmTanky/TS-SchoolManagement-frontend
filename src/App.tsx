@@ -30,6 +30,8 @@ import { UserRole } from './interfaces/userInfo';
 
 // CSS
 import './App.css';
+import { AdminHelpDesk } from './pages/admin/helpdesk/helpdesk';
+import { AdminOneTicket } from './pages/admin/helpdesk/oneTicket';
 
 function App() {
 
@@ -49,6 +51,8 @@ function App() {
               <Route path="/admin/users/:userID" render={() => isLoggedIn && user.role === UserRole.ADMIN ? <AdminOneUser/> : <Redirect to="/" />  } />
               <Route exact path="/admin/subjects" render={() => isLoggedIn && user.role === UserRole.ADMIN ? <AllSubjects/> : <Redirect to="/" />  } />
               <Route path="/admin/subjects/edit/:subjectID" render={() => isLoggedIn && user.role === UserRole.ADMIN ? <EditSubjectPage/> : <Redirect to="/" />  } />
+              <Route exact path="/admin/helpdesk" render={() => isLoggedIn && user.role === UserRole.ADMIN ? <AdminHelpDesk/> : <Redirect to="/" />  } />
+              <Route path="/admin/helpdesk/ticket/:ticketID" render={() => isLoggedIn && user.role === UserRole.ADMIN ? <AdminOneTicket/> : <Redirect to="/" />  } />
               {/* Teacher Routes */}
               <Route exact path="/teacher/subjects" render={() => isLoggedIn && user.role === UserRole.TEACHER ? <TeacherSubjectPage/> : <Redirect to="/" />  } />
               <Route exact path="/teacher/students" render={() => isLoggedIn && user.role === UserRole.TEACHER ? <TeacherStudentPage/> : <Redirect to="/" />  } />

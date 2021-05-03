@@ -76,10 +76,13 @@ export const EditSubjectPage: FC = () => {
                         <p> {subject.data.description} </p>
                         <h3 style={{marginTop: '1rem'}} > Instructor: {subject.data.instructor === null ? "None" : `${subject.data.instructor?.firstName} ${subject.data.instructor?.lastName}`} </h3>
                         <span> <Button onClick={() => setOpenEdit(true)} style={{marginTop: '1rem'}} color="primary" variant="contained" > Edit Subject </Button>
-                        <Button onClick={() => {
+                        {subject.data.instructor === null ? <Button onClick={() => {
                             setOpenAssign(true)
                             setChecked2(true)
-                        }} style={{marginTop: '1rem', marginLeft: '0.5rem'}} color="secondary" variant="contained" > {subject.data.instructor === null ? 'Add Instructor' : 'Re-assign Instructor'} </Button> </span>
+                        }} style={{marginTop: '1rem', marginLeft: '0.5rem'}} color="secondary" variant="contained" > Add Intructor </Button> : <Button onClick={() => {
+                            setOpenAssign(true)
+                            setChecked2(true)
+                        }} style={{marginTop: '1rem', marginLeft: '0.5rem'}} color="secondary" variant="contained" > Re-assign Instructor </Button>} </span>
                         {openAssign ? <AssignInstructor checked2={checked2} setChecked2={setChecked2} subjectID={subject.data!._id!} getOneSubject={getOneSubject} instructorID={subject.data.instructor?._id} setToggle={setOpenAssign} /> : "" }
                     </div>
 
