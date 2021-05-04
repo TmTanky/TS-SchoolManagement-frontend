@@ -66,10 +66,10 @@ export const TeacherStudentPage: FC = () => {
                 <Fade in={checked} >
                     <div>
                         <h1 style={{textAlign: 'center', padding: '2rem 0rem'}} > My Students </h1>
-                            {user.instructorsSubjects?.map(item => {
+                            {user.instructorsSubjects?.length === 0 ? <h3 style={{padding: '4rem 0rem', textAlign: 'center'}} > (Ask for Admin for subjects.) </h3> : user.instructorsSubjects?.map(item => {
                                 return <div key={item._id} className="inssubs" >
                                     <h1 style={{marginBottom: '0.5rem'}} > {item.name} </h1>
-                                    {item.studentsWhoTake?.length === 0 ? <h2> No students take </h2> : 
+                                    {item.studentsWhoTake?.length === 0 ? <h3> No students take </h3> : 
                                     item.studentsWhoTake?.map(student => {
                                         return <li key={student._id} > {student.firstName} {student.lastName} </li>
                                     })}

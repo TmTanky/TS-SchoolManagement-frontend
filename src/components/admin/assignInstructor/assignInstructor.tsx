@@ -50,12 +50,9 @@ export const AssignInstructor: FC<{setToggle: Function, instructorID: string | u
         
         try {
 
-            console.log(instructorID)
-            console.log(toBeInstructor)
-
             await axios.post('http://localhost:8000/graphql', {
-                query: `mutation reAssignInstructor($subjectID: ID!, $instructorID: ID!) {
-                    reAssignInstructor(subjectID: $subjectID, instructorID: $instructorID) {
+                query: `mutation assignInstructor($subjectID: ID!, $instructorID: ID!) {
+                    assignInstructor(subjectID: $subjectID, instructorID: $instructorID) {
                         name
                         description
                         instructor {

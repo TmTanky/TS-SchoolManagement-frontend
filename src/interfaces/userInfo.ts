@@ -1,3 +1,4 @@
+import { Iconcern } from "./concern";
 import { Isubject } from "./subjects";
 
 export enum UserRole {
@@ -15,4 +16,5 @@ export interface IuserInfo {
     role?: UserRole
     subjects?: Isubject[] | null
     instructorsSubjects?: Isubject[] | null
+    myTickets?: Iconcern[]
 }

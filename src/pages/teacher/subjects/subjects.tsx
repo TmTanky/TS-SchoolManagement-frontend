@@ -62,7 +62,8 @@ export const TeacherSubjectPage: FC = () => {
                 <Fade in={checked} >
                     <div>
                         <h1 style={{textAlign: 'center', padding: '2rem 0rem'}} > My Subjects </h1>
-                        {user.instructorsSubjects?.map(item => {
+                        {user.instructorsSubjects?.length === 0 ? <h3 style={{padding: '4rem 0rem', textAlign: 'center'}} > (Ask for Admin for subjects.) </h3> :
+                        user.instructorsSubjects?.map(item => {
                             return <div key={item._id} className="inssubs" >
                                 <h1 style={{marginBottom: '0.5rem'}} > {item.name} </h1>
                                 <p> {item.description} </p>

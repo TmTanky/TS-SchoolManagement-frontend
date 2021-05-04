@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler, FC, useState } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -24,16 +24,16 @@ import './login.css'
 export const LoginPage: FC = () => {
 
     const dispatch = useDispatch()
-    const [loginErrors, setLoginErrors] = useState<{err: string[]}>({
-        err: []
-    })
     const [open, setOpen] = useState(false)
     const [login, setLogin] = useState<Ilogin>({
         email: "",
         password: ""
     })
+    const [loginErrors, setLoginErrors] = useState<{err: string[]}>({
+        err: []
+    })
 
-    const handleChange: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {value, name} = e.target
 
         setLogin({
@@ -46,7 +46,7 @@ export const LoginPage: FC = () => {
         
         try {
 
-            const {data} = await axios.post<{data: {loginUser: IuserInfo}, errors: IloginError[]}>('http://localhost:8000/graphql', {
+            const {data} = await axios.post<{data: {loginUser: IuserInfo}, errors: IloginError[]}>('http://localhost:8000/graphql',{
                 query: `query loginUser($email: String!, $password: String!) {
                     loginUser(email: $email, password: $password) {
                         _id
@@ -55,43 +55,30 @@ export const LoginPage: FC = () => {
                         lastName
                         email
                         role
-                        subjects {
-                        _id
-                        name
-                        description
-                        }
                     }
-                } `,
+                }`,
                 variables: {
                     email: login.email,
                     password: login.password
-                }
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                } 
             })
 
-            if (data.data.loginUser !== null) {
-                setLoginErrors({
-                    err: []
-                })
-                dispatch(loginSuccess(data.data.loginUser))
-                dispatch(loginTrue())
-            }
-            
-            if (data.errors && data.errors.length >= 1 ) {
+            if (data.errors && data.errors.length > 0) {
                 data.errors.map(item => {
                     return setLoginErrors({
                         err: [item.message]
                     })
                 })
-                setOpen(true)
-            }
+                return setOpen(true)
+            } 
+
+            dispatch(loginSuccess(data.data.loginUser))
+            dispatch(loginTrue())
             
         } catch (err) {
             console.log(err)
         }
+
     }
 
     return (

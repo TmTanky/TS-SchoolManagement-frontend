@@ -79,8 +79,6 @@ export const RegisterPage: FC = () => {
                 }
             })
 
-            console.log(data.data.createUser)
-
             if (data.data.createUser !== null) {
                 dispatch(loginSuccess(data.data.createUser))
                 dispatch(loginTrue())
