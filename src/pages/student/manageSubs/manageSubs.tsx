@@ -51,7 +51,7 @@ export const StudentManageSubject: FC = () => {
         
         try {
 
-            const {data} = await axios.post<{data: {allSubjects: Isubject[]}}>('http://localhost:8000/graphql', {
+            const {data} = await axios.post<{data: {allSubjects: Isubject[]}}>('https://schoolmanagement-gql.herokuapp.com/graphql', {
                 query: `query allSubjects {
                     allSubjects {
                         _id
@@ -84,7 +84,7 @@ export const StudentManageSubject: FC = () => {
 
         try {
 
-            await axios.post('http://localhost:8000/graphql',{
+            await axios.post('https://schoolmanagement-gql.herokuapp.com/graphql',{
                 query: `mutation studentTakeSubject($toTakeSubjects: [String!], $student: ID!) {
                     studentTakeSubject(toTakeSubjects: $toTakeSubjects, student: $student) {
                         firstName
@@ -109,7 +109,7 @@ export const StudentManageSubject: FC = () => {
         
         try {
 
-            await axios.post('http://localhost:8000/graphql', {
+            await axios.post('https://schoolmanagement-gql.herokuapp.com/graphql', {
                 query: `mutation studentRemoveSubject($toRemoveSubjects: [String!], $student: ID!) {
                     studentRemoveSubject(toRemoveSubjects: $toRemoveSubjects, student: $student) {
                         firstName

@@ -5,7 +5,7 @@ import axios from 'axios'
 import { TextField, Button, TextareaAutosize, Fade } from '@material-ui/core'
 import { Iconcern } from '../../interfaces/concern'
 
-export const CreateTicket: FC<{setToggle: Function, toggle: boolean, userID: string}> = ({setToggle, toggle, userID}) => {
+export const CreateTicket: FC<{setToggle: Function, toggle: boolean, userID: string, getUser: Function}> = ({setToggle, toggle, userID, getUser}) => {
 
     const [ticket, setTicket] = useState({
         title: "",
@@ -39,6 +39,7 @@ export const CreateTicket: FC<{setToggle: Function, toggle: boolean, userID: str
             })
 
             if (data.data.createConcern) {
+                await getUser()
                 setToggle(false)
             }
             

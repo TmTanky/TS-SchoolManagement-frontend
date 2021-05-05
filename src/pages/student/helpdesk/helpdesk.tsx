@@ -67,7 +67,7 @@ export const StudentHelpDesk: FC = () => {
                 <Button onClick={() => setCreate(true)} color="primary" variant="contained" > Create Ticket </Button>
             </div>
 
-            {create ? <CreateTicket userID={userID!} toggle={create} setToggle={setCreate} /> : ""}
+            {create ? <CreateTicket getUser={getUser} userID={userID!} toggle={create} setToggle={setCreate} /> : ""}
 
             {checked ? <Fade in={checked} >
                 <div className="mytickets">
