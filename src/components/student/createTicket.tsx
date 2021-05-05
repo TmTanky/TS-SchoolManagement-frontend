@@ -25,7 +25,7 @@ export const CreateTicket: FC<{setToggle: Function, toggle: boolean, userID: str
 
         try {
 
-            const {data} = await axios.post<{data: {createConcern: Iconcern}}>('http://localhost:8000/graphql',{
+            const {data} = await axios.post<{data: {createConcern: Iconcern}}>('https://schoolmanagement-gql.herokuapp.com/graphql',{
                 query: `mutation createConcern($userID: ID!, $title: String!, $concern: String!) {
                     createConcern(userID: $userID, title: $title, concern: $concern) {
                         title

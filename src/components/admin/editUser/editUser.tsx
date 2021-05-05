@@ -38,7 +38,7 @@ export const EditUserComponent: FC<{ setToggle: Function, fname: string, mname: 
         
         try {
 
-            const {data} = await axios.post<{errors: Ierror[]}>('http://localhost:8000/graphql', {
+            const {data} = await axios.post<{errors: Ierror[]}>('https://schoolmanagement-gql.herokuapp.com/graphql', {
                 query: `mutation editUsersName($userID: ID!, $firstName: String!, $middleName: String!, $lastName: String!) {
                     editUsersName(userID: $userID, firstName: $firstName, middleName: $middleName, lastName: $lastName) {
                         firstName
@@ -70,7 +70,7 @@ export const EditUserComponent: FC<{ setToggle: Function, fname: string, mname: 
         
         try {
 
-            await axios.post('http://localhost:8000/graphql', {
+            await axios.post('https://schoolmanagement-gql.herokuapp.com/graphql', {
                 query: `mutation userChangeRole($personID: ID!, $newRole: String!) {
                     userChangeRole(personID: $personID, newRole: $newRole) {
                         firstName

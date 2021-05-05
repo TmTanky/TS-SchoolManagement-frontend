@@ -17,7 +17,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin: 10rem;
+    width: 50%;
+    margin: 10rem auto;
     padding: 2rem;
     border-radius: 5px;
 }
@@ -33,4 +34,16 @@
     border-radius: 5px;
     margin: 0.5rem;
     padding: 1rem 2rem;
+}
+
+@media screen and (max-width: 750px) {
+    .createticketform {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .createticketform {
+        width: 95%;
+    }
 }

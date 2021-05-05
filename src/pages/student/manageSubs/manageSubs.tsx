@@ -23,7 +23,7 @@ export const StudentManageSubject: FC = () => {
 
         try {
             
-            const {data} = await axios.post<{data: {oneUser: {subjects: Isubject[]}}}>('http://localhost:8000/graphql',{
+            const {data} = await axios.post<{data: {oneUser: {subjects: Isubject[]}}}>('https://schoolmanagement-gql.herokuapp.com/graphql',{
                 query: `query oneUser($userID: ID!) {
                     oneUser(userID: $userID) {
                         subjects {

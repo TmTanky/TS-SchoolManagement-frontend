@@ -49,7 +49,7 @@ export const RegisterPage: FC = () => {
         
         try {
 
-            const {data} = await axios.post<{data: {createUser: IuserInfo}, errors: IloginError[]}>('http://localhost:8000/graphql', {
+            const {data} = await axios.post<{data: {createUser: IuserInfo}, errors: IloginError[]}>('https://schoolmanagement-gql.herokuapp.com/graphql', {
                 query: `mutation createUser($firstName: String!, $middleName: String!, $lastName: String!, $email: String!, $password: String!, $passwordConfirm: String!) {
                     createUser(firstName: $firstName, middleName: $middleName, lastName: $lastName, email: $email, password: $password, passwordConfirm: $passwordConfirm) {
                         _id

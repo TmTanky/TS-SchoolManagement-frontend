@@ -25,7 +25,7 @@ export const EditSubjectComponent: FC<{subject: {data: Isubject}, checked: boole
         
         try {
 
-            const {data} = await axios.post<{errors: Ierror[]}>('http://localhost:8000/graphql', {
+            const {data} = await axios.post<{errors: Ierror[]}>('https://schoolmanagement-gql.herokuapp.com/graphql', {
                 query: `mutation editSubject($subjectID: ID!, $newName: String!, $newDescription: String!) {
                     editSubject(subjectID: $subjectID, newName: $newName, newDescription: $newDescription) {
                         name

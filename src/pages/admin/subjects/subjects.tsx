@@ -8,17 +8,21 @@ import { CircularProgress, Fade, Button } from '@material-ui/core'
 // Interfaces
 import { Isubject } from '../../../interfaces/subjects'
 
+// Components
+import { AdminCreateSub } from '../../../components/admin/createSub/createSub'
+
 // CSS
 import './subjects.css'
 
 export const AllSubjects: FC = () => {
 
     const history = useHistory()
+    const [openCreate, setOpenCreate] = useState(false)
     const [subjects, setSubjects] = useState<Isubject[]>([])
     const [checked, setChecked] = useState(false)
 
     const getSubjects = async () => {
-        const {data} = await axios.post<{data: {allSubjects: Isubject[]}}>('http://localhost:8000/graphql', {
+        const {data} = await axios.post<{data: {allSubjects: Isubject[]}}>('https://schoolmanagement-gql.herokuapp.com/graphql', {
             query: `query allSubjects {
                 allSubjects {
                     _id
@@ -53,6 +57,13 @@ export const AllSubjects: FC = () => {
                 <CircularProgress/>
             </div> : <div>
                 <h1 style={{textAlign: 'center', padding: '3rem 0rem'}} > All Subjects </h1>
+
+                <div className="createsub">
+                    <Button onClick={() => setOpenCreate(true)} variant="contained" color="primary" > Create Subject </Button>
+                </div>
+
+                {openCreate ? <AdminCreateSub getSubjects={getSubjects} toggle={openCreate} setToggle={setOpenCreate} /> : ""}
+
                 {subjects.map(item => {
                     return <Fade in={checked} key={item._id} >
                         <div className="onesub" >

@@ -46,7 +46,7 @@ export const LoginPage: FC = () => {
         
         try {
 
-            const {data} = await axios.post<{data: {loginUser: IuserInfo}, errors: IloginError[]}>('http://localhost:8000/graphql',{
+            const {data} = await axios.post<{data: {loginUser: IuserInfo}, errors: IloginError[]}>('https://schoolmanagement-gql.herokuapp.com/graphql',{
                 query: `query loginUser($email: String!, $password: String!) {
                     loginUser(email: $email, password: $password) {
                         _id

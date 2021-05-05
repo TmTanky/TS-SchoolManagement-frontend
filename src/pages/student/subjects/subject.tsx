@@ -22,7 +22,7 @@ export const StudentsSubjectPage: FC = () => {
 
         try {
 
-            const {data} = await axios.post<{data: {oneUser: IuserInfo}}>('http://localhost:8000/graphql', {
+            const {data} = await axios.post<{data: {oneUser: IuserInfo}}>('https://schoolmanagement-gql.herokuapp.com/graphql', {
                 query: `query oneUser($userID: ID!) {
                     oneUser(userID: $userID) {
                         firstName

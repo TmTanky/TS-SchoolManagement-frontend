@@ -20,7 +20,7 @@ export const AdminHelpDesk: FC = () => {
 
         try {
 
-            const {data} = await axios.post<{data: {allConcerns: Iconcern[]}}>('http://localhost:8000/graphql',{
+            const {data} = await axios.post<{data: {allConcerns: Iconcern[]}}>('https://schoolmanagement-gql.herokuapp.com/graphql',{
                 query: `query allConcerns {
                     allConcerns {
                         _id

@@ -23,3 +23,36 @@ header {
     justify-content: center;
     margin: auto;
 }
+
+@media screen and (max-width: 650px) {
+
+    .everyannouncement {
+        margin: 0.5rem 2rem;
+    }
+
+}
+
+
+@media screen and (max-width: 550px) {
+
+    .everyannouncement {
+        margin: 0.5rem 1rem;
+    }
+
+    header h1 {
+        font-size: 6vw;
+    }
+
+    header p {
+        font-size: 4vw;
+    }
+
+    .everyannouncement h1 {
+        font-size: 6vw;
+    }
+
+    .everyannouncement p {
+        font-size: 4vw;
+    }
+
+}

@@ -26,7 +26,7 @@ export const CreateAnnouncement: FC<{setToggle: Function, toggle: boolean, detai
     const createAnnouncement = async () => {
 
         try {
-            const {data} = await axios.post('http://localhost:8000/graphql', {
+            const {data} = await axios.post('https://schoolmanagement-gql.herokuapp.com/graphql', {
                 query: `mutation createAnnouncement($title: String!, $details: String!) {
                     createAnnouncement(title: $title, details: $details) {
                         _id

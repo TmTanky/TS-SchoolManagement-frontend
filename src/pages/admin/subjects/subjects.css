@@ -27,3 +27,55 @@
 .editsubdesc {
     padding: 0.5rem;
 }
+
+.createsub {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem;
+}
+
+.createsubbox {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.createsubform {
+    background-color: whitesmoke;
+    padding: 2rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+}
+
+.createsubbtns {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 750px) {
+    
+    .createsubform {
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    
+    .createsubform {
+        width: 95%;
+    }
+
+}

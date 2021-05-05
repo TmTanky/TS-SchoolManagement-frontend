@@ -4,3 +4,9 @@
     padding: 1rem 2rem;
     margin: 0.5rem 1rem; 
 }
+
+@media screen and (max-width: 500px) {
+    .studentsub {
+        padding: 1rem;
+    }
+}

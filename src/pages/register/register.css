@@ -2,9 +2,15 @@
     display: flex;
     flex-direction: column;
     width: 60%;
-    margin: 10rem auto;
+    margin: 5rem auto;
 }
 
 .passwords {
     display: flex
+}
+
+@media screen and (max-width: 650px) {
+    .registerform {
+        width: 90%;
+    }
 }

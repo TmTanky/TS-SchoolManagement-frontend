@@ -32,7 +32,7 @@ export const HomePage: FC = () => {
     })
 
     const getAllAnnouncement = async () => {
-        const {data} = await axios.post<{data: {allAnnouncements: Iannouncement[]} }>('http://localhost:8000/graphql', {
+        const {data} = await axios.post<{data: {allAnnouncements: Iannouncement[]} }>('https://schoolmanagement-gql.herokuapp.com/graphql', {
             query: `query allAnnouncements {
                 allAnnouncements {
                     _id

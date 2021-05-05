@@ -16,7 +16,7 @@ export const AssignInstructor: FC<{setToggle: Function, instructorID: string | u
     })
 
     const getAllUsers = async () => {
-        const {data} = await axios.post<{data: {allUsers: IuserInfo[]}}>('http://localhost:8000/graphql', {
+        const {data} = await axios.post<{data: {allUsers: IuserInfo[]}}>('https://schoolmanagement-gql.herokuapp.com/graphql', {
             query: `query allUsers {
                 allUsers {
                     _id
@@ -50,7 +50,7 @@ export const AssignInstructor: FC<{setToggle: Function, instructorID: string | u
         
         try {
 
-            await axios.post('http://localhost:8000/graphql', {
+            await axios.post('https://schoolmanagement-gql.herokuapp.com/graphql', {
                 query: `mutation assignInstructor($subjectID: ID!, $instructorID: ID!) {
                     assignInstructor(subjectID: $subjectID, instructorID: $instructorID) {
                         name

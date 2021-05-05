@@ -27,7 +27,7 @@ export const EditSubjectPage: FC = () => {
     })
 
     const getOneSubject = useCallback(async () => {
-        const {data} = await axios.post<{data: {oneSubject: Isubject}}>('http://localhost:8000/graphql',{
+        const {data} = await axios.post<{data: {oneSubject: Isubject}}>('https://schoolmanagement-gql.herokuapp.com/graphql',{
             query: `query oneSubject($subjectID: ID!) {
                 oneSubject(subjectID: $subjectID ) {
                     _id
@@ -75,7 +75,7 @@ export const EditSubjectPage: FC = () => {
                         <h1 style={{marginBottom: '1rem'}} > {subject.data.name} </h1>
                         <p> {subject.data.description} </p>
                         <h3 style={{marginTop: '1rem'}} > Instructor: {subject.data.instructor === null ? "None" : `${subject.data.instructor?.firstName} ${subject.data.instructor?.lastName}`} </h3>
-                        <span> <Button onClick={() => setOpenEdit(true)} style={{marginTop: '1rem'}} color="primary" variant="contained" > Edit Subject </Button>
+                        <span> <Button onClick={() => setOpenEdit(true)} style={{marginTop: '1rem', marginLeft: '0.5rem'}} color="primary" variant="contained" > Edit Subject </Button>
                         {subject.data.instructor === null ? <Button onClick={() => {
                             setOpenAssign(true)
                             setChecked2(true)

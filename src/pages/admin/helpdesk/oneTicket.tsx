@@ -18,7 +18,7 @@ export const AdminOneTicket: FC = () => {
 
         try {
 
-            const {data} = await axios.post<{data: {oneTicket: Iconcern}}>('http://localhost:8000/graphql', {
+            const {data} = await axios.post<{data: {oneTicket: Iconcern}}>('https://schoolmanagement-gql.herokuapp.com/graphql', {
                 query: `query oneTicket($ticketID: ID!) {
                     oneTicket(ticketID: $ticketID) {
                         _id
@@ -52,7 +52,7 @@ export const AdminOneTicket: FC = () => {
         
         try {
 
-            await axios.post('http://localhost:8000/graphql',{
+            await axios.post('https://schoolmanagement-gql.herokuapp.com/graphql',{
                 query: `mutation concernDone($ticketID: ID!) {
                     concernDone(ticketID: $ticketID) {
                         title
@@ -75,7 +75,7 @@ export const AdminOneTicket: FC = () => {
         
         try {
 
-            await axios.post('http://localhost:8000/graphql',{
+            await axios.post('https://schoolmanagement-gql.herokuapp.com/graphql',{
                 query: `mutation concernUndo($ticketID: ID!) {
                     concernUndo(ticketID: $ticketID) {
                         title
@@ -99,7 +99,7 @@ export const AdminOneTicket: FC = () => {
     },[getOneTicket])
 
     return (
-        <div>
+        <div className="oneticketbox" >
             {checked ? <div>
                 <Fade in={checked}>
                     <div className="oneticket" >

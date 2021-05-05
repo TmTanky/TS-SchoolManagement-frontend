@@ -29,7 +29,7 @@ export const ManageUsersPage: FC = () => {
     })
 
     const getAllUsers = async () => {
-        const {data} = await axios.post<{data: {allUsers: IuserInfo[]}}>('http://localhost:8000/graphql', {
+        const {data} = await axios.post<{data: {allUsers: IuserInfo[]}}>('https://schoolmanagement-gql.herokuapp.com/graphql', {
             query: `query allUsers {
                 allUsers {
                     _id
